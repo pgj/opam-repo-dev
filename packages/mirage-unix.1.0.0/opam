@@ -14,4 +14,4 @@ depends: ["cstruct" {>="0.7.1"}
           "tuntap" {>="0.5"}
           "fd-send-recv"
 ]
-conflicts: ["mirage-xen"]
+conflicts: ["mirage-xen" "mirage-kfreebsd"]
