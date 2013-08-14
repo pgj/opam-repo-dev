@@ -13,5 +13,5 @@ depends: ["cstruct" {>="0.7.1"}
           "shared-memory-ring" {>="0.4.0"}
           "xenstore"
 ]
-conflicts: ["mirage-unix"]
+conflicts: ["mirage-unix" "mirage-kfreebsd"]
 os: ["linux"]
