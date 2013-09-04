@@ -2,4 +2,4 @@ opam-version: "1"
 maintainer: "anil@recoil.org"
 build: [ ]
 remove: [ ]
-depends: [ ("mirage-unix" {="1.0.0"} | "mirage-xen" {="1.0.0"} ) ]
+depends: [ ("mirage-unix" {="1.0.0"} | "mirage-xen" {="1.0.0"} | "mirage-kfreebsd" {="1.0.0"}) ]
