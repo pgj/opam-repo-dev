@@ -7,11 +7,11 @@ patches: [
   "https://github.com/pgj/ocaml/commit/26196344b32a1bb243b0e8986e5c0c82b05cc262.patch"
 ]
 build: [
-  ["./configure" "-prefix" prefix]
-  [make "world"]
-  [make "world.opt"]
-  [make "install"]
-  ["./configure" "-prefix" prefix "-no-shared-libs"]
+  ["./configure" "-prefix" "%{prefix}%"]
+  ["%{make}%" "world"]
+  ["%{make}%" "world.opt"]
+  ["%{make}%" "install"]
+  ["./configure" "-prefix" "%{prefix}%" "-no-shared-libs"]
   ["sh" "-c" "cd stdlib && env OCAMLPARAM='nodynlink=1,nopic=1,_' %{make}% clean"]
   ["sh" "-c" "cd stdlib && env OCAMLPARAM='nodynlink=1,nopic=1,_' %{make}% all"]
   ["sh" "-c" "cd stdlib && env OCAMLPARAM='nodynlink=1,nopic=1,_' %{make}% allopt"]
