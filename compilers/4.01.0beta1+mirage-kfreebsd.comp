@@ -5,6 +5,7 @@ patches: [
   "https://github.com/pgj/ocaml/commit/2e155b0c4e551f3cfb31aedbe44b4304ad2e4ccf.patch"
   "https://github.com/pgj/ocaml/commit/e63fdcbad6b403a52a7458e849136b08f97bb3d3.patch"
   "https://github.com/pgj/ocaml/commit/26196344b32a1bb243b0e8986e5c0c82b05cc262.patch"
+  "https://github.com/pgj/ocaml/commit/acb827c29187de3fafd17561e6e53606de33a94a.patch"
 ]
 build: [
   ["./configure" "-prefix" "%{prefix}%" "-no-tk"]
@@ -28,4 +29,5 @@ env: [
   [MIRAGE_OS = "kfreebsd"]
   [MIRAGE_NET = "direct"]
   [OCAMLPARAM = "nodynlink=1,nopic=1,fixedpt=16,_"]
+  [NO_EXECUTABLES = "YES"]
 ]
