@@ -13,3 +13,7 @@ depends: [
   "cow" {>"0.5.4"}
   "mirari" {>="0.9.3"}
 ] 
+patches: [
+  "64ff6e96312e9d27abc0e5ea102bc18677783028.patch"
+  "3b36814706ba4bf7576e33db8eb131028206ab1e.patch"
+]

@@ -1,0 +1,44 @@
+From 3b36814706ba4bf7576e33db8eb131028206ab1e Mon Sep 17 00:00:00 2001
+From: Gabor Pali <pali.gabor@gmail.com>
+Date: Wed, 4 Sep 2013 18:43:17 +0100
+Subject: [PATCH] Fix build for FreeBSD systems.
+
+---
+ default_build.sh | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/default_build.sh b/default_build.sh
+index 2a32ae9..464b746 100755
+--- a/default_build.sh
++++ b/default_build.sh
+@@ -1,16 +1,23 @@
+ #!/bin/sh -x
+ 
++type gmake > /dev/null 2>/dev/null
++if [ "$?" -eq 0 ]; then
++	MAKE=gmake
++else
++	MAKE=make
++fi
++
+ export CONF_FLAGS=--no-install
+ if [ `opam list -i mirage-xen -s 2>/dev/null` ]; then
+-	make xen-build
++	$MAKE xen-build
+ else
+   if [ `opam list -i mirage-kfreebsd -s 2>/dev/null` ]; then
+-	gmake kfreebsd-build
++	$MAKE kfreebsd-build
+   else
+     if [ `opam list -i mirage-net-direct -s 2>/dev/null` ]; then
+-	make unix-direct-build
++	$MAKE unix-direct-build
+     else
+-	make unix-socket-build
++	$MAKE unix-socket-build
+     fi
+   fi
+ fi
+-- 
+1.8.4
+

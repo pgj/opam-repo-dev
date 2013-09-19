@@ -1,0 +1,47 @@
+From 64ff6e96312e9d27abc0e5ea102bc18677783028 Mon Sep 17 00:00:00 2001
+From: Gabor Pali <pali.gabor@gmail.com>
+Date: Wed, 4 Sep 2013 18:30:19 +0100
+Subject: [PATCH] Add support for the kFreeBSD backend.
+
+---
+ Makefile         | 3 +++
+ default_build.sh | 8 ++++++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 942c54a..ed4776f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -24,6 +24,9 @@ fs:
+ xen-%:
+ 	$(MAKE) FLAGS=--xen $*
+ 
++kfreebsd-%:
++	$(MAKE) FLAGS=--kfreebsd $*
++
+ unix-socket-%:
+ 	$(MAKE) FLAGS="--unix --socket" $*
+ 
+diff --git a/default_build.sh b/default_build.sh
+index ecfabb8..2a32ae9 100755
+--- a/default_build.sh
++++ b/default_build.sh
+@@ -4,9 +4,13 @@ export CONF_FLAGS=--no-install
+ if [ `opam list -i mirage-xen -s 2>/dev/null` ]; then
+ 	make xen-build
+ else
+-  if [ `opam list -i mirage-net-direct -s 2>/dev/null` ]; then
++  if [ `opam list -i mirage-kfreebsd -s 2>/dev/null` ]; then
++	gmake kfreebsd-build
++  else
++    if [ `opam list -i mirage-net-direct -s 2>/dev/null` ]; then
+ 	make unix-direct-build
+-  else 
++    else
+ 	make unix-socket-build
++    fi
+   fi
+ fi
+-- 
+1.8.4
+
