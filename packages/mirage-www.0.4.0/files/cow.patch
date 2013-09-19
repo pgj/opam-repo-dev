@@ -1,0 +1,24 @@
+diff --git a/src/blog.ml b/src/blog.ml
+index 7ace4fe..ff3abc8 100644
+--- a/src/blog.ml
++++ b/src/blog.ml
+@@ -253,6 +253,7 @@ let atom_entry_of_ent filefn e =
+   return {
+     Atom.entry = meta;
+     summary    = None;
++    base       = None;
+     content
+   }
+   
+diff --git a/src/wiki.ml b/src/wiki.ml
+index c3606c7..e9b7dee 100644
+--- a/src/wiki.ml
++++ b/src/wiki.ml
+@@ -519,6 +519,7 @@ let atom_entry_of_ent filefn e =
+   return {
+     Atom.entry = meta;
+     summary    = None;
++    base       = None;
+     content
+   }
+   
